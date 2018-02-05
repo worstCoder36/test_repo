@@ -18,7 +18,12 @@ $scope.stringOfFood.split(",").filter((i)=>i.length);
           console.log($scope.listOfFood);
           $scope.numberOfFoodItems = $scope.listOfFood.length;
           console.log($scope.numberOfFoodItems);
-            if($scope.numberOfFoodItems <=3){
+
+            if($scope.numberOfFoodItems == 0){
+              $scope.colorOfContainer = "yellow";
+              $scope.message = "Enter the data first."
+            }
+            else if($scope.numberOfFoodItems <=3){
               $scope.colorOfContainer = "green";
               $scope.message = "Enjoy!";
             }
