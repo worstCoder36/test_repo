@@ -5,7 +5,7 @@
 angular.module("foodLimiter",[]).controller("foodController",
 function($scope, $filter){
         $scope.stringOfFood = '';
-        $scope.message = 'Welcome!';
+        $scope.message = '';
         $scope.listOfFood = '';
         $scope.numberOfFoodItems = 0;
         $scope.colorOfContainer = "yellow";
