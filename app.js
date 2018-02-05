@@ -20,11 +20,11 @@ $scope.stringOfFood.split(",").filter((i)=>i.length);
           console.log($scope.numberOfFoodItems);
             if($scope.numberOfFoodItems <=3){
               $scope.colorOfContainer = "green";
-              $scope.message = "Yo go ahead";
+              $scope.message = "Enjoy!";
             }
             else{
               $scope.colorOfContainer = "red";
-              $scope.message = "No, don't go ahead";
+              $scope.message = "Too much!";
             }
         }
       });
