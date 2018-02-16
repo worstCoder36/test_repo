@@ -30,7 +30,7 @@
           </div>
 
           <ol class="list-group">
-            <li ng-repeat="item in buyList.items" class="list-group-item"><div class="row"><div class="col-sm">Buy {{item.quantity}} {{item.name}}</div><div class="col-sm"><button class="btn" ng-click="buyList.sendToOtherList(item,$index)">Bought</button></div></div></li>
+            <li ng-repeat="item in buyList.items" class="list-group-item"><div class="row"><div class="col-sm">Buy {{item.quantity}} {{item.name}}</div><div class="col-sm"><button class="btn btn-success" ng-click="buyList.sendToOtherList(item,$index)">Bought</button></div></div></li>
           </ol>
         </div>
 
