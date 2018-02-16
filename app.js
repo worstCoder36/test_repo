@@ -1,37 +1,85 @@
-
 (function(){
+  'use strict';
 
-      var app =
-angular.module("foodLimiter",[]).controller("foodController",
-function($scope, $filter){
-        $scope.stringOfFood = '';
-        $scope.message = 'Welcome!!';
-        $scope.listOfFood = '';
-        $scope.numberOfFoodItems = 0;
-        $scope.colorOfContainer = "yellow";
+  angular.module('ShoppingListApp', [])
+  .controller('toBuyController', ToBuyController)
+  .controller('boughtController', BoughtController)
+  .service('ShoppingListService', ShoppingListService);
 
-        $scope.goAheadOrNot = function(){
+  ToBuyController.$inject = ['ShoppingListService'];
+  function ToBuyController(ShoppingListService){
+    var buyList = this;
 
-          $scope.listOfFood =
-$scope.stringOfFood.split(",").filter((i)=>i.length);
-          console.log($scope.stringOfFood);
-          console.log($scope.listOfFood);
-          $scope.numberOfFoodItems = $scope.listOfFood.length;
-          console.log($scope.numberOfFoodItems);
+    buyList.items = ShoppingListService.getItemsList();
 
-            if($scope.numberOfFoodItems == 0){
-              $scope.colorOfContainer = "yellow";
-              $scope.message = "Enter the data first."
-            }
-            else if($scope.numberOfFoodItems <=3){
-              $scope.colorOfContainer = "green";
-              $scope.message = "Enjoy!";
-            }
-            else{
-              $scope.colorOfContainer = "red";
-              $scope.message = "Too much!";
-            }
-        }
-      });
+    // list.addItem = function(){
+    //   ShoppingListService.addItem(itemAdder.itemName, itemAdder.itemQuantity);
+    // }
+
+
+    buyList.sendToOtherList = function (itemName, itemIndex) {
+      ShoppingListService.buyItem(itemName, itemIndex);
+    }
+  }
+
+  BoughtController.$inject = ['ShoppingListService'];
+  function BoughtController(ShoppingListService){
+    var boughtList = this;
+    boughtList.items = ShoppingListService.getBoughtItemsList();
+  }
+
+  function ShoppingListService(){
+
+    var service = this;
+
+    var buyList = [
+      {
+        name: "Cookies",
+        quantity: 10
+      },
+      {
+        name: "Cold Drinks",
+        quantity: 5
+      },
+      {
+        name: "Chips",
+        quantity: 20
+      },
+      {
+        name: "Bananas",
+        quantity: 12
+      },
+      {
+        name: "Mars",
+        quantity: 30
+      },
+      {
+        name: "Muffins",
+        quantity: 20
+      }
+    ];
+
+    var boughtList = [];
+
+    service.getItemsList = function () {
+      return buyList;
+    }
+
+    service.getBoughtItemsList = function () {
+      return boughtList;
+    }
+
+    service.buyItem = function (item, itemIndex) {
+      buyList.splice(itemIndex,1);
+      boughtList.push(item);
+    };
+
+    service.getItems = function () {
+      return items;
+    }
+
+  }
+
+
 
 })();
