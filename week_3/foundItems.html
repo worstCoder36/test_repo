@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col">
+
+    <div class="container" ng-show="found.items">
+      Nothing Found
+    </div>
+    <ul class="list-group" ng-if="found.items">
+      <li ng-repeat="x in found.items" class="list-group-item">
+
+          <div class="row">
+            <div class="col">
+                {{x.name}},{{x.short_name}},{{x.description}}
+            </div>
+
+            <div class="col">
+                <button class="btn btn-success" ng-click="found.onRemove({index:$index});">Don't want this one!</button>
+            </div>
+          </div>
+
+      </li>
+    </ul>
+  </div>
+</div>

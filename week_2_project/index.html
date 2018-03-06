@@ -1,0 +1,54 @@
+<!doctype html>
+
+<html>
+  <head>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <title>Custom Service</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+
+  <body ng-app="ShoppingListApp">
+    <!-- Just an image -->
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        Shopping List Application
+      </a>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm" ng-controller="toBuyController as buyList">
+          <nav class="navbar navbar-light bg-light">
+              <h3>To Buy</h3>
+          </nav>
+
+          <div class="card" ng-if="!buyList.items.length">
+            <div class="card-body">
+              <h5 class="card-title">Everything is bought!!</h5>
+            </div>
+          </div>
+
+          <ol class="list-group">
+            <li ng-repeat="item in buyList.items" class="list-group-item"><div class="row"><div class="col-sm">Buy {{item.quantity}} {{item.name}}</div><div class="col-sm"><button class="btn btn-success" ng-click="buyList.sendToOtherList(item,$index)">Bought</button></div></div></li>
+          </ol>
+        </div>
+
+        <div class="col-sm" ng-controller="boughtController as boughtList">
+          <nav class="navbar navbar-light bg-light">
+              <h3>Already Bought</h3>
+          </nav>
+          <div class="card" ng-if="!boughtList.items.length">
+            <div class="card-body">
+              <h5 class="card-title">Nothing bought yet</h5>
+            </div>
+          </div>
+          <ol class="list-group">
+            <li ng-repeat="item in boughtList.items" class="list-group-item">Bought {{item.quantity}} {{item.name}}</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>
