@@ -54,23 +54,28 @@ MenuSearchService.$inject = ["$http"];
     var service = this;
 
     service.getMatchedMenuItems = function(searchTerm){
+      var goodArray = [];
+      var flag = 0;
       return $http({
         method: 'GET',
         url: ('https://davids-restaurant.herokuapp.com/menu_items.json')
       }).then(function(result){
-        var goodArray = [];
         //console.log(result.data.menu_items);
         //console.log(result.data.menu_items.length);
         for(var i=0;i<result.data.menu_items.length;i++){
           //console.log(result.data.menu_items[i].description);
         //  console.log(searchTerm);
           if(result.data.menu_items[i].description.toLowerCase().indexOf(searchTerm) != -1){
+            flag = 1;
             goodArray.push(result.data.menu_items[i]);
           //  console.log(result.data.menu_items[i]);
           //  console.log(result.data.menu_items[i]);
           }
         }
         //console.log(goodArray);
+        if(searchTerm == "" || flag == 0){
+          goodArray = [];
+        }
         return goodArray;
       });
     }

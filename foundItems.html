@@ -1,13 +1,16 @@
 <div class="row">
   <div class="col">
 
+    <div class="container" ng-if="!found.items.length">
+      Nothing Found
+    </div>
 
-    <ul class="list-group">
+    <ul class="list-group" >
       <li ng-repeat="x in found.items" class="list-group-item">
 
           <div class="row">
             <div class="col">
-                {{x.name}},{{x.short_name}},{{x.description}}
+                Name: {{x.name}}<br>Short Name: {{x.short_name}}<br>Desc: {{x.description}}
             </div>
 
             <div class="col">
