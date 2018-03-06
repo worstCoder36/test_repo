@@ -36,7 +36,7 @@
 
         narrow.found.then(function (response) {
           narrow.items = response;
-          console.log(narrow.items);
+          //console.log(narrow.items);
         })
         .catch(function (error) {
           console.log("Something went wrong");
@@ -70,7 +70,7 @@ MenuSearchService.$inject = ["$http"];
           //  console.log(result.data.menu_items[i]);
           }
         }
-        console.log(goodArray);
+        //console.log(goodArray);
         return goodArray;
       });
     }

@@ -22,7 +22,7 @@
         </div>
 
       </div>
-      <div class="container"  ng-if="!narrow.x">
+      <div class="container"  ng-if="narrow.x">
         Nothing Found
       </div>
 
@@ -31,7 +31,7 @@
         items="narrow.items"
         on-remove="narrow.removeItem(index)"
 
-        ng-if="narrow.x"
+        ng-if="narrow.x && narrow.items"
       ></found-items>
 
     </div>
